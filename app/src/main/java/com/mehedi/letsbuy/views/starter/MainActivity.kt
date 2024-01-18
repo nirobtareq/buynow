@@ -1,7 +1,8 @@
-package com.mehedi.letsbuy
+package com.mehedi.letsbuy.views.starter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mehedi.letsbuy.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
