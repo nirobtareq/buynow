@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "195687720951",
+    "project_id": "let-s-buy-ac020",
+    "storage_bucket": "let-s-buy-ac020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195687720951:android:6b87619f6fb6a6c6b230f2",
+        "android_client_info": {
+          "package_name": "com.mehedi.letsbuy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGmsVbBkzMRAVhu6mgnYkW6z1KFWHmRQU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
