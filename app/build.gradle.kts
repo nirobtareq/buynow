@@ -34,6 +34,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
@@ -60,7 +64,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // ssp sdp
-
     implementation("com.intuit.ssp:ssp-android:1.1.0")
     implementation("com.intuit.sdp:sdp-android:1.1.0")
 
