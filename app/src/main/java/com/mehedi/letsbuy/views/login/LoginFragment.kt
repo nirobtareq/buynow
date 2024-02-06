@@ -6,18 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mehedi.letsbuy.R
+import com.mehedi.letsbuy.base.BaseFragment
+import com.mehedi.letsbuy.databinding.FragmentLoginBinding
 
 
-class LoginFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
+    override fun setListener() {
+        TODO("Not yet implemented")
+    }
+//dry
+    override fun allObserver() {
+        TODO("Not yet implemented")
     }
 
 

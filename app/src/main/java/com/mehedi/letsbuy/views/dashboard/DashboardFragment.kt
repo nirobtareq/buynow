@@ -7,16 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
 import com.mehedi.letsbuy.R
+import com.mehedi.letsbuy.base.BaseFragment
+import com.mehedi.letsbuy.databinding.FragmentDashboardBinding
 
 
-class DashboardFragment : Fragment() {
+class DashboardFragment :BaseFragment<FragmentDashboardBinding>(FragmentDashboardBinding::inflate) {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false)
+
+
+    override fun setListener() {
+
+    }
+
+    override fun allObserver() {
+
     }
 
 

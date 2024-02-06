@@ -8,15 +8,18 @@ import com.mehedi.letsbuy.views.register.User
 class AuthService : AuthSource {
     override fun userRegistration(user: User): Task<AuthResult> {
         val mAuth = FirebaseAuth.getInstance()
-
         return mAuth.createUserWithEmailAndPassword(user.email, user.password)
     }
 
     override fun userLogin(user: User) {
-        TODO("Not yet implemented")
+        val mAuth = FirebaseAuth.getInstance()
+
+        mAuth.signInWithEmailAndPassword(user.email, user.password)
+
     }
 
     override fun userForgetPassword(email: String) {
+        val mAuth = FirebaseAuth.getInstance()
         TODO("Not yet implemented")
     }
 }
