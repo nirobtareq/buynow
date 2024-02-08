@@ -4,8 +4,9 @@ import androidx.navigation.fragment.findNavController
 import com.mehedi.letsbuy.R
 import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.databinding.FragmentStartBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class StartFragment : BaseFragment<FragmentStartBinding>(FragmentStartBinding::inflate) {
 
     override fun setListener() {

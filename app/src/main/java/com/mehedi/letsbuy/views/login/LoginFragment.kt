@@ -8,8 +8,9 @@ import android.view.ViewGroup
 import com.mehedi.letsbuy.R
 import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.databinding.FragmentLoginBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
     override fun setListener() {
         TODO("Not yet implemented")

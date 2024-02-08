@@ -6,8 +6,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mehedi.letsbuy.core.DataState
 import com.mehedi.letsbuy.data.AuthService
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RegistrationViewModel : ViewModel() {
+@HiltViewModel
+class RegistrationViewModel @Inject constructor(private val authService: AuthService) :
+    ViewModel() {
 
     private val _registrationResponse = MutableLiveData<DataState<User>>()
 
@@ -17,7 +21,7 @@ class RegistrationViewModel : ViewModel() {
     fun userRegistration(user: User) {
         _registrationResponse.postValue(DataState.Loading())
 
-        val authService = AuthService()
+
 
         authService.userRegistration(user)
             .addOnSuccessListener {

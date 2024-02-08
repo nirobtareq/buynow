@@ -6,8 +6,9 @@ import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.core.DataState
 import com.mehedi.letsbuy.databinding.FragmentRegisterBinding
 import com.mehedi.letsbuy.isEmpty
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
 
 

@@ -1,18 +1,12 @@
 package com.mehedi.letsbuy.views.dashboard
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-
-import com.mehedi.letsbuy.R
 import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.databinding.FragmentDashboardBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class DashboardFragment :BaseFragment<FragmentDashboardBinding>(FragmentDashboardBinding::inflate) {
-
+@AndroidEntryPoint
+class DashboardFragment :
+    BaseFragment<FragmentDashboardBinding>(FragmentDashboardBinding::inflate) {
 
 
     override fun setListener() {
