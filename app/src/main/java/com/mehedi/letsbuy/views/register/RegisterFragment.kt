@@ -2,6 +2,8 @@ package com.mehedi.letsbuy.views.register
 
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.mehedi.letsbuy.R
 import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.core.DataState
 import com.mehedi.letsbuy.databinding.FragmentRegisterBinding
@@ -28,7 +30,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 if (!etName.isEmpty() && !etEmail.isEmpty() && !etPassword.isEmpty()) {
                     //Toast.makeText(context, "All input done !", Toast.LENGTH_LONG).show()
 
-                    val user = User(
+                    val user = UserRegistration(
                         etName.text.toString(),
                         etEmail.text.toString(),
                         etPassword.text.toString(),
@@ -73,6 +75,9 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                 is DataState.Success -> {
                     loading.dismiss()
                     Toast.makeText(context, " created User : ${it.data}", Toast.LENGTH_SHORT).show()
+
+                    findNavController().navigate(R.id.action_registerFragment_to_seller_dashboardFragment)
+
                 }
             }
 
