@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.LetsBuy" parent="Base.Theme.LetsBuy" />
+
+    <style name="Theme.LetsBuy.App.Bar" parent="Theme.Material3.DayNight"/>
+
 </resources>

@@ -3,4 +3,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="logout">logout</string>
+    <string name="products">Products</string>
+    <string name="add_products">Add</string>
+    <string name="seller_profile">Profile</string>
+    <string name="settings">Settings</string>
+    <string name="report">Report</string>
+    <string name="menu">menu</string>
 </resources>
