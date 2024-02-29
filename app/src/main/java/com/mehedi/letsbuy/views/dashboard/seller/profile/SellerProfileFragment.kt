@@ -1,10 +1,11 @@
-package com.mehedi.letsbuy
+package com.mehedi.letsbuy.views.dashboard.seller.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.mehedi.letsbuy.R
 
 
 class SellerProfileFragment : Fragment() {

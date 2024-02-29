@@ -1,4 +1,4 @@
-package com.mehedi.letsbuy
+package com.mehedi.letsbuy.views.dashboard.seller.upload
 
 import android.app.Activity
 import android.util.Log
@@ -6,20 +6,31 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.viewModels
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.auth.FirebaseAuth
 import com.mehedi.letsbuy.base.BaseFragment
+import com.mehedi.letsbuy.core.DataState
 import com.mehedi.letsbuy.core.areAllPermissionsGranted
 import com.mehedi.letsbuy.core.extract
 import com.mehedi.letsbuy.core.requestPermissions
 import com.mehedi.letsbuy.data.Product
 import com.mehedi.letsbuy.databinding.FragmentUploadProductBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.UUID
 
 @AndroidEntryPoint
 class UploadProductFragment :
     BaseFragment<FragmentUploadProductBinding>(FragmentUploadProductBinding::inflate) {
 
-    private lateinit var product: Product
+    private val product: Product by lazy()
+    {
+        Product()
+    }
+
+
+    private val viewModel: ProductUploadViewModel by viewModels()
+
     override fun setListener() {
         permissionsRequest = getPermissionsRequest()
 
@@ -41,14 +52,18 @@ class UploadProductFragment :
                 val price = etProductPrice.extract()
                 val amount = etProductAmount.extract()
 
-                product = Product(
-                    name = name,
-                    description = description,
-                    price = price.toDouble(),
-                    amount = amount.toInt()
-                )
+                FirebaseAuth.getInstance().currentUser?.let {
+                    product.apply {
+                        this.productID = UUID.randomUUID().toString()
+                        this.sellerID = it.uid
+                        this.name = name
+                        this.description = description
+                        this.price = price.toDouble()
+                        this.amount = amount.toInt()
+                    }
+                    uploadProduct(product)
 
-                uploadProduct(product)
+                }
 
 
             }
@@ -63,6 +78,8 @@ class UploadProductFragment :
 
         return registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
             if (areAllPermissionsGranted(permissionList)) {
+
+
                 // ase
 
                 Toast.makeText(requireContext(), "Ase", Toast.LENGTH_SHORT).show()
@@ -89,10 +106,35 @@ class UploadProductFragment :
 
     private fun uploadProduct(product: Product) {
 
+        viewModel.productUpload(product)
+
 
     }
 
     override fun allObserver() {
+
+
+        viewModel.productUploadResponse.observe(viewLifecycleOwner) {
+
+            when (it) {
+                is DataState.Error -> {
+                    loading.dismiss()
+                }
+
+                is DataState.Loading -> {
+                    loading.show()
+                }
+
+                is DataState.Success -> {
+
+                    Toast.makeText(requireContext(), it.data, Toast.LENGTH_LONG).show()
+                    loading.dismiss()
+                }
+            }
+
+
+        }
+
 
     }
 
@@ -119,12 +161,16 @@ class UploadProductFragment :
                     Log.d("TAG", "$fileUri")
                     binding.ivProduct.setImageURI(fileUri)
 
+                    product.imageLink = fileUri.toString()
+
 
                 }
+
                 ImagePicker.RESULT_ERROR -> {
                     Toast.makeText(requireContext(), ImagePicker.getError(data), Toast.LENGTH_SHORT)
                         .show()
                 }
+
                 else -> {
                     Toast.makeText(requireContext(), "Task Cancelled", Toast.LENGTH_SHORT).show()
                 }
