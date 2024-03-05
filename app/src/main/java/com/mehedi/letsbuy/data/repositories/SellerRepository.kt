@@ -1,4 +1,4 @@
-package com.mehedi.letsbuy.data
+package com.mehedi.letsbuy.data.repositories
 
 import android.net.Uri
 import com.google.android.gms.tasks.Task
@@ -7,6 +7,8 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.mehedi.letsbuy.core.Nodes
+import com.mehedi.letsbuy.data.Product
+import com.mehedi.letsbuy.data.SellerSource
 import javax.inject.Inject
 
 class SellerRepository @Inject constructor(
@@ -17,7 +19,6 @@ class SellerRepository @Inject constructor(
 
         val storage: StorageReference =
             storageRef.child("products").child("PRD_${System.currentTimeMillis()}")
-
 
         return storage.putFile(productImageUri)
 

@@ -41,7 +41,7 @@ class MyProductFragment :
                 }
 
                 is DataState.Success -> {
-                    it.data?.let { it1 -> setDataToRV(it1) }
+                    it.data?.let{ it1 -> setDataToRV(it1) }
                     loading.dismiss()
                 }
             }

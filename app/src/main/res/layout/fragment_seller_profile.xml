@@ -1,15 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDDC39"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".views.dashboard.seller.profile.SellerProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/_32sdp"
+            android:src="@drawable/ic_image_placeholder" />
+
+
+        <EditText
+            android:id="@+id/txt_shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:fontFamily="@font/poppins"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/_ff9800"
+            tools:text="jodu kodu computer" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:fontFamily="@font/poppins"
+            android:inputType="text"
+            tools:text="Masum Mehedi" />
+
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:fontFamily="@font/poppins"
+            android:inputType="textEmailAddress"
+            tools:text="masum@gmail.com" />
+
+
+        <Button
+            android:id="@+id/btn_update"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Profile Update"
+            android:textStyle="bold"
+            app:strokeColor="@color/_ff9800" />
+
+    </LinearLayout>
+
+</ScrollView>

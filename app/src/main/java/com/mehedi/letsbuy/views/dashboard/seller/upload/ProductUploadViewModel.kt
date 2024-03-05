@@ -7,9 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mehedi.letsbuy.core.DataState
 import com.mehedi.letsbuy.data.Product
-import com.mehedi.letsbuy.data.SellerRepository
+import com.mehedi.letsbuy.data.repositories.SellerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
