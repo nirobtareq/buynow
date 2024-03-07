@@ -19,7 +19,7 @@ class SellerProfileViewModel @Inject constructor(private val repo: SellerProfile
     val profileUpdateResponse: LiveData<DataState<String>> = _profileUpdateResponse
 
 
-    fun updateProfile(user: SellerProfile, hasLocalImageUrl: Boolean) {
+    fun updateProfile(user: Profile, hasLocalImageUrl: Boolean) {
         _profileUpdateResponse.postValue(DataState.Loading())
 
         if (hasLocalImageUrl) {
@@ -57,9 +57,9 @@ class SellerProfileViewModel @Inject constructor(private val repo: SellerProfile
     }
 
 
-    private val _logedInUserResponse = MutableLiveData<DataState<SellerProfile>>()
+    private val _logedInUserResponse = MutableLiveData<DataState<Profile>>()
 
-    val logedInUserResponse: LiveData<DataState<SellerProfile>>
+    val logedInUserResponse: LiveData<DataState<Profile>>
         get() = _logedInUserResponse
 
     fun getUserByUserID(userID: String) {
@@ -72,7 +72,7 @@ class SellerProfileViewModel @Inject constructor(private val repo: SellerProfile
             _logedInUserResponse.postValue(
                 DataState.Success(
                     value.documents[0].toObject(
-                        SellerProfile::class.java
+                        Profile::class.java
                     )
                 )
             )

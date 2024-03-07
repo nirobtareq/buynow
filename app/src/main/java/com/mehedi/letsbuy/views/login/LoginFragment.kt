@@ -5,8 +5,10 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.core.DataState
+import com.mehedi.letsbuy.core.Nodes
 import com.mehedi.letsbuy.databinding.FragmentLoginBinding
 import com.mehedi.letsbuy.isEmpty
+import com.mehedi.letsbuy.views.dashboard.customer.CustomerDashboard
 import com.mehedi.letsbuy.views.dashboard.seller.SellerDashboard
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,10 +51,37 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
                 is DataState.Success -> {
                     loading.dismiss()
-                    Toast.makeText(context, " created User : ${it.data}", Toast.LENGTH_SHORT).show()
 
-                    startActivity(Intent(requireContext(), SellerDashboard::class.java))
-                    requireActivity().finish()
+                    it.data?.apply {
+
+                        when (userType) {
+                            Nodes.USER_TYPE_CUSTOMER -> {
+                                startActivity(
+                                    Intent(
+                                        requireContext(),
+                                        CustomerDashboard::class.java
+                                    )
+                                )
+                                requireActivity().finish()
+                            }
+
+                            Nodes.USER_TYPE_SELLER -> {
+                                startActivity(Intent(requireContext(), SellerDashboard::class.java))
+                                requireActivity().finish()
+                            }
+
+                            else -> {
+                                Toast.makeText(
+                                    requireContext(),
+                                    " Something went wrong",
+                                    Toast.LENGTH_LONG
+                                ).show()
+
+                            }
+                        }
+
+                    }
+
 
                 }
             }

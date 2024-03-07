@@ -7,7 +7,7 @@ import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import com.mehedi.letsbuy.core.Nodes
-import com.mehedi.letsbuy.views.dashboard.seller.profile.SellerProfile
+import com.mehedi.letsbuy.views.dashboard.seller.profile.Profile
 import com.mehedi.letsbuy.views.dashboard.seller.profile.toMap
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ class SellerProfileRepository @Inject constructor(
 
     }
 
-    fun updateUser(user: SellerProfile): Task<Void> {
+    fun updateUser(user: Profile): Task<Void> {
 
 
         return db.collection(Nodes.USER).document(user.userID).update(user.toMap())

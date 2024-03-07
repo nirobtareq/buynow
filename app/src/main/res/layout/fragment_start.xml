@@ -9,49 +9,78 @@
     tools:context=".views.starter.StartFragment">
 
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        android:layout_width="@dimen/_200sdp"
-        android:layout_height="@dimen/_200sdp"
-        android:layout_gravity="center"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/ecom_lt_1" />
-
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/layout_loading"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_32sdp"
-        android:fontFamily="@font/bebas_neue"
+        android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Welcome to Let's Buy app"
-        android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
-        android:textColor="@color/_ff9800" />
+        android:orientation="vertical"
+        android:visibility="visible">
 
+        <com.airbnb.lottie.LottieAnimationView
 
-    <Button
-        android:id="@+id/btnLogin"
-        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loading" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_32sdp"
-        android:layout_marginVertical="@dimen/_8sdp"
-        android:fontFamily="@font/poppins"
-        android:text="Login"
-        android:textStyle="bold"
-        app:strokeColor="@color/_ff9800" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    <Button
-        android:id="@+id/btnRegister"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_32sdp"
-        android:fontFamily="@font/poppins"
-        android:text="Register"
-        android:textStyle="bold"
-        app:strokeColor="@color/_ff9800" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_gravity="center"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/ecom_lt_1" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_32sdp"
+            android:fontFamily="@font/bebas_neue"
+            android:gravity="center"
+            android:text="Welcome to Let's Buy app"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="@color/_ff9800" />
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:layout_marginVertical="@dimen/_8sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Login"
+            android:textStyle="bold"
+            app:strokeColor="@color/_ff9800" />
+
+        <Button
+            android:id="@+id/btnRegister"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_32sdp"
+            android:fontFamily="@font/poppins"
+            android:text="Register"
+            android:textStyle="bold"
+            app:strokeColor="@color/_ff9800" />
+
+
+    </LinearLayout>
 
 
 </LinearLayout>

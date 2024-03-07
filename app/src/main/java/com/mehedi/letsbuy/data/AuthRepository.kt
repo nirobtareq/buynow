@@ -4,6 +4,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import com.mehedi.letsbuy.core.Nodes
 import com.mehedi.letsbuy.views.login.UserLogin
 import com.mehedi.letsbuy.views.register.UserRegistration
@@ -23,10 +24,13 @@ class AuthRepository  @Inject constructor(
 
     override fun userForgetPassword(email: String) {
         val mAuth = FirebaseAuth.getInstance()
-        TODO("Not yet implemented")
     }
 
     override fun createUser(user: UserRegistration): Task<Void> {
         return db.collection(Nodes.USER).document(user.userID).set(user)
+    }
+
+    fun getUserByUserID(userID: String): Task<QuerySnapshot> {
+        return db.collection(Nodes.USER).whereEqualTo("userID", userID).get()
     }
 }

@@ -1,6 +1,6 @@
 package com.mehedi.letsbuy.views.dashboard.seller.profile
 
-data class SellerProfile(
+data class Profile(
     var name: String = "",
     var email: String = "",
     val password: String = "",
@@ -10,7 +10,7 @@ data class SellerProfile(
     val shopName: String? = null
 )
 
-fun SellerProfile.toMap(): Map<String, Any?> {
+fun Profile.toMap(): Map<String, Any?> {
     return mapOf(
         "name" to name,
         "email" to email,

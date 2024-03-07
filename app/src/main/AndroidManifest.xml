@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -10,11 +9,8 @@
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:name=".di.MyApp"
@@ -27,6 +23,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LetsBuy"
         tools:targetApi="31">
+        <activity
+            android:name=".views.dashboard.customer.CustomerDashboard"
+            android:exported="false"
+            android:theme="@style/Theme.LetsBuy" />
         <activity
             android:name=".views.dashboard.seller.SellerDashboard"
             android:exported="false"

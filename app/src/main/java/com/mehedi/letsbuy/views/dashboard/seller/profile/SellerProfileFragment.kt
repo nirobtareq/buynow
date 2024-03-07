@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SellerProfileFragment :
     BaseFragment<FragmentSellerProfileBinding>(FragmentSellerProfileBinding::inflate) {
 
-    private var sellerProfile: SellerProfile? = null
+    private var sellerProfile: Profile? = null
 
     private val viewModel: SellerProfileViewModel by viewModels()
 
@@ -62,7 +62,7 @@ class SellerProfileFragment :
 
     }
 
-    private fun updateProfile(sellerProfile: SellerProfile?) {
+    private fun updateProfile(sellerProfile: Profile?) {
         sellerProfile?.let { viewModel.updateProfile(it, hasLocalImageUrl) }
     }
 
@@ -114,7 +114,7 @@ class SellerProfileFragment :
 
     }
 
-    private fun setProfileData(sellerProfile: SellerProfile?) {
+    private fun setProfileData(sellerProfile: Profile?) {
 
         hasLocalImageUrl = sellerProfile?.userImage.isNullOrBlank()
 
