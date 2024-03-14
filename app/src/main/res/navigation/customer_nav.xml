@@ -5,7 +5,6 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/customerHomeFragment">
 
-
     <fragment
         android:id="@+id/customerHomeFragment"
         android:name="com.mehedi.letsbuy.CustomerHomeFragment"
