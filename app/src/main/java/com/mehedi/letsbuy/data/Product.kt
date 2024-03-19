@@ -10,3 +10,15 @@ data class Product(
     var productID: String = ""
 
 )
+
+fun Product.toMap(): Map<String, Any?> {
+    return mapOf(
+        "name" to name,
+        "price" to price,
+        "imageLink" to imageLink,
+        "description" to description,
+        "amount" to amount,
+        "sellerID" to sellerID,
+        "productID" to productID
+    )
+}

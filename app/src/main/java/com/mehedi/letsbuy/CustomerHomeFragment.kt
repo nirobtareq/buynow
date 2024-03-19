@@ -1,18 +1,20 @@
 package com.mehedi.letsbuy
 
+import android.util.Log
 import androidx.fragment.app.viewModels
+import com.google.firebase.auth.FirebaseAuth
 import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.core.DataState
 import com.mehedi.letsbuy.data.Product
 import com.mehedi.letsbuy.databinding.FragmentCustomerHomeBinding
 import com.mehedi.letsbuy.views.dashboard.customer.CustomerProductAdapter
 import com.mehedi.letsbuy.views.dashboard.customer.ProductViewModelCustomer
-import com.mehedi.letsbuy.views.dashboard.seller.products.SellerProductAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CustomerHomeFragment :
-    BaseFragment<FragmentCustomerHomeBinding>(FragmentCustomerHomeBinding::inflate) {
+    BaseFragment<FragmentCustomerHomeBinding>(FragmentCustomerHomeBinding::inflate),
+    CustomerProductAdapter.CartClickListener {
 
     private val viewmodel: ProductViewModelCustomer by viewModels()
 
@@ -45,9 +47,19 @@ class CustomerHomeFragment :
 
     private fun setDataToRV(it: List<Product>) {
 
-        binding.rvCustomerProduct.adapter = CustomerProductAdapter(it)
+
+        val customerProductAdapter = CustomerProductAdapter(it, this)
+
+        binding.rvCustomerProduct.adapter = customerProductAdapter
 
 
+    }
+
+    override fun onCartClick(product: Product) {
+        Log.d("TAG", "onCartClick: $product ")
+
+        val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
+        viewmodel.addToCart(product, uid)
     }
 
 

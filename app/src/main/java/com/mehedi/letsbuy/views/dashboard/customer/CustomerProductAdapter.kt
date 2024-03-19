@@ -7,21 +7,24 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.mehedi.letsbuy.data.Product
 import com.mehedi.letsbuy.databinding.ItemProductBinding
-import com.mehedi.letsbuy.databinding.ItemSellerProductBinding
 
-class CustomerProductAdapter(val productList: List<Product>) :
+class CustomerProductAdapter(
+    val productList: List<Product>,
+    val cartClickListener: CartClickListener
+) :
     RecyclerView.Adapter<CustomerProductAdapter.ProductViewHolder>() {
 
+    fun interface CartClickListener {
+        fun onCartClick(product: Product)
+    }
 
-    class ProductViewHolder(val binding: ItemProductBinding) :
-        RecyclerView.ViewHolder(binding.root)
+
+    class ProductViewHolder(val binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(
             ItemProductBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
+                LayoutInflater.from(parent.context), parent, false
             )
         )
     }
@@ -41,6 +44,11 @@ class CustomerProductAdapter(val productList: List<Product>) :
                 txtProductStock.text = "Stock $ ${it.amount}"
                 ivProduct.load(it.imageLink)
 
+
+            }
+
+            holder.binding.btnCart.setOnClickListener { _ ->
+                cartClickListener.onCartClick(it)
 
             }
 

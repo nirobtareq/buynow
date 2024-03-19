@@ -1,12 +1,15 @@
 package com.mehedi.letsbuy.views.dashboard.customer
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.mehedi.letsbuy.core.DataState
 import com.mehedi.letsbuy.data.Product
 import com.mehedi.letsbuy.data.repositories.CustomerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -47,5 +50,26 @@ class ProductViewModelCustomer @Inject constructor(private val repo: CustomerRep
 
 
     }
+
+
+    private val _cartResponse = MutableLiveData<DataState<String>>()
+
+    val cartResponse: LiveData<DataState<String>> = _cartResponse
+
+    fun addToCart(product: Product, userID: String) {
+
+        viewModelScope.launch {
+            repo.addToCart(product, userID).addOnSuccessListener { it ->
+                _cartResponse.postValue(DataState.Success("Cart Added"))
+            }.addOnFailureListener {
+                Log.d("TAG", "addToCart: ${it.message} ")
+
+                _cartResponse.postValue(DataState.Error(it.message))
+            }
+        }
+
+
+    }
+
 
 }

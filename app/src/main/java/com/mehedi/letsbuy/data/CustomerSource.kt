@@ -9,6 +9,7 @@ interface CustomerSource {
 
     fun uploadProductImage(productImageUri: Uri): UploadTask
     fun uploadProduct(product: Product): Task<Void>
+    suspend fun addToCart(product: Product, userID: String): Task<Void>
 
 
     fun getAllProductByUserID(userID: String): Task<QuerySnapshot>

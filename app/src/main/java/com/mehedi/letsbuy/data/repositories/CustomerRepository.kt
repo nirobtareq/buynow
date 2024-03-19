@@ -28,8 +28,10 @@ class CustomerRepository @Inject constructor(
     override fun uploadProduct(product: Product): Task<Void> {
 
         return db.collection(Nodes.PRODUCT).document(product.productID).set(product)
+    }
 
-
+    override suspend fun addToCart(product: Product, userID: String): Task<Void> {
+        return db.collection(Nodes.CART).document(userID).set(product)
     }
 
     override fun getAllProductByUserID(userID: String): Task<QuerySnapshot> {
