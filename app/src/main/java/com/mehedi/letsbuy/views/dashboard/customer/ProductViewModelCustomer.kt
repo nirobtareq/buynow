@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mehedi.letsbuy.core.DataState
+import com.mehedi.letsbuy.data.Cart
 import com.mehedi.letsbuy.data.Product
 import com.mehedi.letsbuy.data.repositories.CustomerRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -56,10 +57,10 @@ class ProductViewModelCustomer @Inject constructor(private val repo: CustomerRep
 
     val cartResponse: LiveData<DataState<String>> = _cartResponse
 
-    fun addToCart(product: Product, userID: String) {
+    fun addToCart(cart: Cart, userID: String) {
 
         viewModelScope.launch {
-            repo.addToCart(product, userID).addOnSuccessListener { it ->
+            repo.addToCart(cart, userID).addOnSuccessListener { it ->
                 _cartResponse.postValue(DataState.Success("Cart Added"))
             }.addOnFailureListener {
                 Log.d("TAG", "addToCart: ${it.message} ")

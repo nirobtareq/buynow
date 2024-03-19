@@ -5,6 +5,7 @@ import androidx.fragment.app.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.mehedi.letsbuy.base.BaseFragment
 import com.mehedi.letsbuy.core.DataState
+import com.mehedi.letsbuy.data.Cart
 import com.mehedi.letsbuy.data.Product
 import com.mehedi.letsbuy.databinding.FragmentCustomerHomeBinding
 import com.mehedi.letsbuy.views.dashboard.customer.CustomerProductAdapter
@@ -59,7 +60,19 @@ class CustomerHomeFragment :
         Log.d("TAG", "onCartClick: $product ")
 
         val uid = FirebaseAuth.getInstance().currentUser?.uid.toString()
-        viewmodel.addToCart(product, uid)
+        val cart = Cart().apply {
+            userID = uid
+            name = product.name
+            price = product.price
+            imageLink = product.imageLink
+            description = product.description
+            amount = product.amount
+            sellerID = product.sellerID
+            productID = product.productID
+        }
+
+
+        viewmodel.addToCart(cart, uid)
     }
 
 
